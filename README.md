@@ -256,34 +256,6 @@ kubelet:
   extra_args:
     max-pods: 150
 
-# Configure  network plug-ins 
-# KE provides the following network plug-ins that are deployed as add-ons: flannel, calico, weave, and canal
-# After you launch the cluster, you cannot change your network provider.
-# Setting the network plug-in
-network:
-    plugin: canal
-    options:
-      canal_flannel_backend_type: vxlan
-
-# Specify DNS provider (coredns or kube-dns)
-dns:
-  provider: coredns
-
-# Currently, only authentication strategy supported is x509.
-# You can optionally create additional SANs (hostnames or IPs) to
-# add to the API server PKI certificate.
-# This is useful if you want to use a load balancer for the
-# control plane servers.
-authentication:
-  strategy: x509
-  sans:
-    - "k8s.computingforgeeks.com"
-
-# Set Authorization mechanism
-authorization:
-    # Use `mode: none` to disable authorization
-    mode: rbac
-
 # Currently only nginx ingress provider is supported.
 # To disable ingress controller, set `provider: none`
 # `node_selector` controls ingress placement and is optional
